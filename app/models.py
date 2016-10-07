@@ -20,6 +20,7 @@ class Owner(models.Model):
 
 class Album(models.Model):
     topic_name = models.CharField(max_length=30, unique=True)
+    since_id = models.IntegerField(null=True, default=None)
 
     class Meta:
         verbose_name_plural = 'album'

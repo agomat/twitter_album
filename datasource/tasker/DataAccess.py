@@ -1,6 +1,6 @@
 # This class should be the only of this package to use app/Model
 
-from django.core.exceptions import *
+from django.db import IntegrityError
 
 from app.models import Owner, Album, Photo
 
@@ -17,3 +17,16 @@ class DataAccess(object):
         album = Album.objects.get(topic_name=topic_name)
         album.since_id = since_id
         album.save()
+
+    @staticmethod
+    def save_photo(topic, owner_name, owner_screen_name, media_url, favorite_count):
+        try:
+            photo = Photo.objects.create(
+                media_url=media_url,
+                favorite_count=favorite_count,
+                album=album,
+                owner=owner
+            )
+        except IntegrityError as e:
+            if 'unique constraint' in e.message:
+                print '%s Photo exists already' % (media_url)
