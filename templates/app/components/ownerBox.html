@@ -1,0 +1,14 @@
+{% extends 'app/master/master_box.html' %}
+
+{% block boxtitle %}
+    Owners
+{% endblock %}
+
+
+{% block boxcontent %}
+    <ul>
+        {% for u in owners %}
+            <li><a href="{% url 'owner' u.screen_name %}">{{u.name}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

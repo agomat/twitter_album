@@ -1,0 +1,17 @@
+{% extends "app/master/master.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-2">
+            {% include 'app/components/topicBox.html' %}
+            {% include 'app/components/ownerBox.html' %}
+        </div>
+        <div class="col-sm-10">
+            {% block right %}
+                {% include 'app/components/photoBox.html' %}
+            {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}

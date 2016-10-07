@@ -1,0 +1,29 @@
+{% extends 'app/master/master_box.html' %}
+
+{% block boxtitle %}
+    Images - Share to Facebook
+{% endblock %}
+
+
+{% block boxcontent %}
+
+  <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Fav count</th>
+            <th>Added DateTime</th>
+          </tr>
+        </thead>
+        <tbody>
+                {% for image in images%}
+                    <tr><td><img src="{{image.media_url}}" class="pic img-responsive" alt="" /></td><td>{{image.favorite_count}}</td><td>{{image.first_seen}}</td></tr>
+                {% empty %}
+                    <tr><td colspan="3">Nothing to show here! Plese select a topic or an owner</td></tr>
+                {% endfor %}
+        </tbody>
+      </table>
+  </div>
+
+{% endblock %}
