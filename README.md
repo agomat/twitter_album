@@ -1,5 +1,4 @@
-STEP 0 (Optional but recommended)
-
+**STEP 0 (Optional but recommended)**
 
 Install mkvirtualenv globally:
 sudo pip install virtualenvwrapper
@@ -13,10 +12,10 @@ activate your virtual space:
 workon twitter_album
 
 
-STEP 1
+**STEP 1**
 Set your Twitter consumer_key, consumer_secret, access_token_key, access_token_secret in datasource/tasker/ConfMixin.py file
 
-STEP 2
+**STEP 2**
 
 
 pip install -r requirements.txt
@@ -25,7 +24,7 @@ python manage.py migrate
 python manage.py runserver
 
 
-OTHER STUFFS:
+**OTHER STUFFS:**
 
 Tests:
 ./manage.py test
@@ -36,12 +35,15 @@ python manage.py createsuperuser
 Exit virtualenv
 deactivate
 
-django-cron may do not work properly with virtualenv.
+**_NOTE_** django-cron may do not work properly with virtualenv.
 To run it manually append to /twitter_album/urls.py:
-from TwitterTask import TwitterTask
+`from datasource.tasker.TwitterTask import TwitterTask
 TwitterTask()
-
+`
 Then run the server multiple times to populate your album
-This is possibible becsuse The tasker classe is decoupled from django-cron model
+This is possibible because The tasker class is decoupled from django-cron model
 
-ho ritenuto testare solo in model, per mancanza di  tempo e per prendere confidenza con l'ORM di Django (è stata utili per poi sviluppare la parte di salvataggio del cron)
+**USING API**
+(append `/api` before the url in your browser)
+**USING FB SOCIAL SHARE**
+(may not work in production because the facebook App Sdk is not registered)

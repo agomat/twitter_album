@@ -13,6 +13,9 @@ class TopicView(CommonListsMixin, ListView):
 
     def get_queryset(self):
         active_topic = get_object_or_404(Album, topic_name=self.kwargs['topic'])
+        if self.kwargs['placeholder']:
+            return Photo.objects.filter(album=active_topic).order_by('-favorite_count')[:7]
+
         return Photo.objects.filter(album=active_topic)
 
     def dispatch(self, request, *args, **kwargs):
