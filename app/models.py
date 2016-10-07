@@ -20,7 +20,6 @@ class Owner(models.Model):
 
 class Album(models.Model):
     topic_name = models.CharField(max_length=30, unique=True)
-    since_id = models.IntegerField(null=True, default=None)
 
     class Meta:
         verbose_name_plural = 'album'
@@ -30,8 +29,9 @@ class Album(models.Model):
 
 
 class Photo(models.Model):
+    tw_id = models.IntegerField(unique=True) # btw not mandatory to be unique; every time we need Min(tw_id)
     media_url = models.URLField(max_length=100, unique=True)
-    favorite_count = models.IntegerField(default=0)
+    favorite_count = models.IntegerField(null=True, default=0)
     first_seen = models.DateTimeField(default=timezone.now, blank=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)

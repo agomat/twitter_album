@@ -52,6 +52,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CRON_CLASSES = [
+    "datasource.tasker.TwitterCron",
+]
+
+CRON_POLLING_FREQUENCY = 100
+
 ROOT_URLCONF = 'twitter_album.urls'
 
 TEMPLATES = [

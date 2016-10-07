@@ -1,32 +1,52 @@
 # This class should be the only of this package to use app/Model
 
 from django.db import IntegrityError
-
+from django.db.models import Min
 from app.models import Owner, Album, Photo
 
 
 class DataAccess(object):
 
     @staticmethod
-    def get_since_id_or_none(topic_name):
+    def get_min_id_or_none(topic_name):
         album, created = Album.objects.get_or_create(topic_name=topic_name)
-        return album.since_id
+        if created:
+            album.save()
+            return None
+        else:
+            aggregation = Photo.objects.filter(album=album).aggregate(Min('tw_id'))
+            return aggregation.get('tw_id__min')
 
     @staticmethod
-    def save_since_id(topic_name, since_id):
-        album = Album.objects.get(topic_name=topic_name)
-        album.since_id = since_id
-        album.save()
+    def save_photo(topic_name, tw_id, owner_name, owner_screen_name, media_url, favorite_count):
 
-    @staticmethod
-    def save_photo(topic, owner_name, owner_screen_name, media_url, favorite_count):
+        # step 1 - Get or create Owner entity
+
+        owner, o_created = Owner.objects.get_or_create(
+            name=owner_name,
+            screen_name=owner_screen_name,
+        )
+        if o_created:
+            owner.save()
+
+        # step 2 - Get or create Album entity
+
+        album, a_created = Album.objects.get_or_create(
+            topic_name=topic_name,
+        )
+        if a_created:
+            album.save()
+
+        # step 3 - Associate owner and album to photo entity
+
         try:
             photo = Photo.objects.create(
+                tw_id=tw_id,
                 media_url=media_url,
                 favorite_count=favorite_count,
                 album=album,
                 owner=owner
             )
+            photo.save()
         except IntegrityError as e:
-            if 'unique constraint' in e.message:
-                print '%s Photo exists already' % (media_url)
+            print '%s Photo exists already' % (media_url)
