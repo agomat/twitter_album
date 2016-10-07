@@ -18,11 +18,16 @@ from django.contrib import admin
 from app.views import IndexView, TopicView, OwnerView
 
 urlpatterns = [
-    url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^topic/(?P<topic>.*)$', TopicView.as_view(), name='topic'),
-    url(r'^owner/(?P<owner>.*)$', OwnerView.as_view(), name='owner'),
+    url(r'^(api)?$', IndexView.as_view(), name='index'),
+    url(r'^(api/)?topic/(?P<topic>.*)$', TopicView.as_view(), name='topic'),
+    url(r'^(api/)?owner/(?P<owner>.*)$', OwnerView.as_view(), name='owner'),
     url(r'^admin/', admin.site.urls),
 ]
 
-#from datasource.tasker.TwitterTask import TwitterTask
-#TwitterTask()
+###########
+# Task testing purpose
+#
+# from datasource.tasker.TwitterTask import TwitterTask
+# TwitterTask()
+#
+###########

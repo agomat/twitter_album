@@ -39,6 +39,14 @@ class Photo(models.Model):
     class Meta:
         verbose_name_plural = 'photos'
 
+    def as_dict(self):
+        return {
+            "id": self.tw_id,
+            "media_url": self.media_url,
+            "favorite_count": self.favorite_count,
+            "first_seen": self.first_seen.now().strftime("%Y-%m-%d %H:%M:%S"),
+        }
+
     def __unicode__(self):  # python 2.*
         return '%s, %s %s' % (self.media_url, self.favorite_count, self.first_seen)
 
