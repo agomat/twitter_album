@@ -52,18 +52,18 @@ class DataAccess(object):
         except IntegrityError as e:
             print '%s Photo exists already' % media_url
 
-        # step 4 - Send mail when the counter reach precise values (Api fetching will no stop)
+        # step 4 - Send mail when the counter reaches precise values (Api fetching will no stop)
 
-        aggregation = Photo.objects.filter(album=album).aggregate(Count('tw_id')) # TODO test it
-        counter = aggregation.get('tw_id___count')
+        aggregation = Photo.objects.filter(album=album).aggregate(Count('tw_id'))
+        counter = aggregation.get('tw_id__count')
         if counter in [100,200,300,400,501]:
             DataAccess.send_mail( topic_name, counter )
 
     @staticmethod
     def send_mail(topic_name, counter): # fake
-        print "SEND MAIL"
+        print "**** SEND MAIL"
         print "%s has %d photos" % (topic_name, counter)
-        print "SEND MAIL END"
+        print "**** SEND MAIL END"
         return True # do not disturb
 
         msg = EmailMultiAlternatives(

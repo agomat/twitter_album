@@ -2,7 +2,6 @@ from ConfMixin import ConfMixin
 from DataAccess import DataAccess
 import twitter
 import urllib
-from pprint import pprint
 
 
 class TwitterTask(ConfMixin):
@@ -68,8 +67,7 @@ class TwitterTask(ConfMixin):
         for tweet in self.tweet_list:
             tweet = tweet.AsDict()
 
-            print "*****************"
-            pprint(tweet.get('id'))
+            print "FOUND TWEET ID %s" % tweet.get('id')
 
             # a) Grabbing favs count
 
@@ -81,8 +79,7 @@ class TwitterTask(ConfMixin):
             try:
                 media_url = tweet['media'][0]['media_url']
             except KeyError:
-                print "No media url found"
-                print tweet
+                print "-> No media url found"
                 pass
 
             # c) Grabbing Long Name
@@ -91,7 +88,7 @@ class TwitterTask(ConfMixin):
             try:
                 owner_name = tweet['user']['name']
             except KeyError:
-                print "No full name found"
+                print "-> No full name found"
                 pass
 
             # d) Grabbing UserName
@@ -100,7 +97,7 @@ class TwitterTask(ConfMixin):
             try:
                 owner_screen_name = tweet['user']['screen_name']
             except KeyError:
-                print "No username found"
+                print "-> No username found"
                 pass
 
             if owner_name and owner_screen_name and media_url:

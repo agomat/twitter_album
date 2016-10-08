@@ -1,7 +1,7 @@
 {% extends 'app/master/master_box.html' %}
 
 {% block boxtitle %}
-    Images <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Condividi</a></div>
+    Images {% if images %}| <a href="7">Top 7 rated</a>{% endif %} <div class="pull-right"> <input style="border:none" type="text" value="{{ request.get_full_path }}"/> <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelocpers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Condividi</a></div></div>
 {% endblock %}
 
 
