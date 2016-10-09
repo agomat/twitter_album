@@ -28,6 +28,7 @@ class ModelCase(TestCase):
         # insert 8 Proto objects
 
         Photo.objects.get_or_create(
+            tw_id=1,
             media_url='http://1.com',
             favorite_count=2,
             album=a1,
@@ -35,12 +36,14 @@ class ModelCase(TestCase):
         )
 
         Photo.objects.get_or_create(
+            tw_id=2,
             media_url='http://2.com',
             album=a1,
             owner=ow2
         )
 
         Photo.objects.get_or_create(
+            tw_id=3,
             media_url='http://3.com',
             favorite_count=7,
             album=a1,
@@ -48,6 +51,7 @@ class ModelCase(TestCase):
         )
 
         Photo.objects.get_or_create(
+            tw_id=4,
             media_url='http://4.com',
             favorite_count=2,
             album=a1,
@@ -55,6 +59,7 @@ class ModelCase(TestCase):
         )
 
         Photo.objects.get_or_create(
+            tw_id=5,
             media_url='http://5.com',
             favorite_count=70,
             album=a1,
@@ -62,6 +67,7 @@ class ModelCase(TestCase):
         )
 
         Photo.objects.get_or_create(
+            tw_id=6,
             media_url='http://6.com',
             favorite_count=1,
             album=a1,
@@ -69,6 +75,7 @@ class ModelCase(TestCase):
         )
 
         Photo.objects.get_or_create(
+            tw_id=7,
             media_url='http://7.com',
             favorite_count=1,
             album=a1,
@@ -76,6 +83,7 @@ class ModelCase(TestCase):
         )
 
         Photo.objects.get_or_create(
+            tw_id=8,
             media_url='http://8.com',
             favorite_count=10,
             album=a1,
@@ -83,6 +91,7 @@ class ModelCase(TestCase):
         )
 
         Photo.objects.get_or_create(
+            tw_id=9,
             media_url='http://other_album.com',
             favorite_count=1,
             album=a2,
