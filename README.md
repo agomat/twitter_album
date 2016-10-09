@@ -12,6 +12,7 @@ When the album reaches 100|200|300|400|501 photos it would be able to send an em
 
 The app exposes an API and a visual representation of the album.
 You can:
+
 1. Access a url in your browser that shows all the pictures
 2. Access a REST api that shows you the data structure of the pictures in your album
 3. Create a page and a link of the most 7 popular photos in the album and export it to Facebook
