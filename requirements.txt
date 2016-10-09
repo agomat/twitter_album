@@ -1,4 +1,4 @@
-Django=1.10.2
-Faker=0.7.3
-django-cron=0.5.0
-python-twitter=3.1
+Django==1.10.2
+Faker==0.7.3
+django-cron==0.5.0
+python-twitter==3.1

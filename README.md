@@ -24,6 +24,7 @@ You can:
 
 Install mkvirtualenv globally:
 
+`sudo pip install virtualenv`
 `sudo pip install virtualenvwrapper`
 
 Add mkvirtualenv script to your **.bashrc** file (local folder may vary).
@@ -33,7 +34,9 @@ Add mkvirtualenv script to your **.bashrc** file (local folder may vary).
 
 Create a new env:
 
-`mkvirtualenv --python=2.7.12 twitter_album` (2.7.x, x may vary, tested with Python 2.7.*)
+`mkvirtualenv --python=python[2.7.12] twitter_album` (2.7.x, x may vary, tested with Python 2.7.*)
+or
+`mkvirtualenv twitter_album`
 
 activate your virtual space:
 
